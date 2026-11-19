@@ -1,0 +1,8 @@
+{
+  "name": "MyVault",
+  "description": "Personal Document Vault & Document Management Prototype inspired by DigiLocker, built with HTML5, CSS3, and Vanilla JavaScript.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

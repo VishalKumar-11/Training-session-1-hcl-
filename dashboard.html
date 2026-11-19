@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — DocLocker</title>
+  <meta name="description" content="DocLocker user dashboard showing document summary, recent uploads, backup & restore tools, and profile details.">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Backdrop (Mobile) -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar" id="appSidebar" aria-label="Dashboard Navigation">
+      <div class="sidebar-header">
+        <a href="index.html" aria-label="DocLocker Landing Page">
+          <img src="assets/logo-white.svg" alt="DocLocker">
+        </a>
+        <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link active" data-nav="dashboard">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="upload.html" class="sidebar-link" data-nav="upload">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <span>Upload Documents</span>
+        </a>
+
+        <a href="documents.html" class="sidebar-link" data-nav="documents">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>My Documents</span>
+        </a>
+
+        <a href="dashboard.html#backup" class="sidebar-link" data-nav="backup">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+          <span>Backup &amp; Restore</span>
+        </a>
+
+        <a href="dashboard.html#profile" class="sidebar-link" data-nav="profile">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span>Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button type="button" class="sidebar-link sidebar-logout" id="logoutBtn">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="workspace-main">
+      <header class="workspace-topbar">
+        <div class="topbar-left">
+          <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Open navigation menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <span class="topbar-breadcrumb">Dashboard</span>
+        </div>
+
+        <div class="topbar-right">
+          <a href="upload.html" class="btn btn-primary btn-sm">Upload File</a>
+          <a href="dashboard.html#profile" class="user-pill-btn" aria-label="View profile">
+            <span class="user-avatar" id="topbarUserInitial">V</span>
+            <span id="topbarUserName">Vishal Kumar</span>
+          </a>
+        </div>
+      </header>
+
+      <main class="workspace-content">
+        <!-- Welcome Banner -->
+        <section class="welcome-banner" aria-label="Welcome summary">
+          <div>
+            <h1>Welcome back, <span id="welcomeUserName">Vishal Kumar</span>!</h1>
+            <p>Your documents are organized and ready in your DocLocker workspace.</p>
+            <div class="hero-cta-group">
+              <a href="upload.html" class="btn btn-primary">Upload New Document</a>
+              <a href="documents.html" class="btn btn-outline">Browse All Files</a>
+            </div>
+          </div>
+          <img src="assets/images/dashboard-folder.svg" alt="Protected document folder" class="welcome-illustration">
+        </section>
+
+        <!-- 3 KPI Cards -->
+        <section class="kpi-grid" aria-label="Vault Metrics">
+          <div class="kpi-card">
+            <div>
+              <div class="kpi-label">Total Documents</div>
+              <div class="kpi-value tabular-nums" id="kpiTotalDocs">0</div>
+              <div class="kpi-sub">Across all categories</div>
+            </div>
+            <div class="kpi-icon blue" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div style="flex: 1;">
+              <div class="kpi-label">Storage Used</div>
+              <div class="kpi-value tabular-nums" id="kpiStorageUsed">0 KB / 1 GB</div>
+              <div class="storage-bar-track" aria-hidden="true">
+                <div class="storage-bar-fill" id="storageBarFill" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="kpi-icon indigo" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+              </svg>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div>
+              <div class="kpi-label">Account Status</div>
+              <div class="kpi-value status-active">Active</div>
+              <div class="kpi-sub">Demo vault session active</div>
+            </div>
+            <div class="kpi-icon green" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recent Uploads Panel -->
+        <section class="panel-card" aria-labelledby="recentUploadsHeading">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title" id="recentUploadsHeading">Recent Uploads</h2>
+              <p class="panel-subtitle">Your most recently stored documents</p>
+            </div>
+            <a href="documents.html" class="text-link" style="display: inline-flex; align-items: center; gap: 6px;">
+              View All
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div id="recentUploadsList" class="doc-list"></div>
+        </section>
+
+        <!-- Backup & Restore Section -->
+        <section class="panel-card" id="backup" aria-labelledby="backupHeading">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title" id="backupHeading">Backup &amp; Restore</h2>
+              <p class="panel-subtitle">Create local snapshots, export document copies, or restore deleted files</p>
+            </div>
+          </div>
+
+          <div class="backup-grid">
+            <div class="backup-stat">
+              <div class="backup-stat-label">Backup Status</div>
+              <div class="backup-stat-value" id="backupStatusValue">Snapshot Ready</div>
+            </div>
+            <div class="backup-stat">
+              <div class="backup-stat-label">Last Backup</div>
+              <div class="backup-stat-value tabular-nums" id="lastBackupTime">Not backed up yet</div>
+            </div>
+            <div class="backup-stat">
+              <div class="backup-stat-label">Files in Backup</div>
+              <div class="backup-stat-value tabular-nums" id="backupFilesCount">0 files</div>
+            </div>
+          </div>
+
+          <div class="backup-actions">
+            <button type="button" class="btn btn-primary" id="createBackupBtn">
+              Create Backup Snapshot
+            </button>
+            <button type="button" class="btn btn-outline" id="downloadBackupBtn">
+              Download Backup Copy (.json)
+            </button>
+            <button type="button" class="btn btn-ghost" id="restoreBackupBtn">
+              Restore Backed-Up Files
+            </button>
+          </div>
+
+          <div class="alert alert-info" style="margin-top: 0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <div>
+              <strong>Simulated Frontend Backup vs. Real Cloud Backup:</strong>
+              Snapshots and restores here operate purely within your browser's <code>localStorage</code> to demonstrate the user workflow. A production cloud backup requires encrypted server-side storage, authenticated APIs, and off-site redundancy.
+            </div>
+          </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="panel-card" id="profile" aria-labelledby="profileHeading">
+          <div class="panel-header">
+            <div>
+              <h2 class="panel-title" id="profileHeading">Account Profile</h2>
+              <p class="panel-subtitle">Manage your prototype profile details</p>
+            </div>
+          </div>
+
+          <form id="profileForm" class="profile-grid">
+            <div class="form-group">
+              <label for="profileFullName" class="form-label">Full Name</label>
+              <input type="text" id="profileFullName" class="form-input no-icon" required>
+            </div>
+
+            <div class="form-group">
+              <label for="profileEmail" class="form-label">Email Address</label>
+              <input type="email" id="profileEmail" class="form-input no-icon" required>
+            </div>
+
+            <div class="form-group">
+              <label for="profileUserId" class="form-label">User ID</label>
+              <input type="text" id="profileUserId" class="form-input no-icon" disabled>
+            </div>
+
+            <div class="form-group">
+              <label for="profileJoinedDate" class="form-label">Member Since</label>
+              <input type="text" id="profileJoinedDate" class="form-input no-icon tabular-nums" disabled>
+            </div>
+
+            <div style="grid-column: 1 / -1; display: flex; align-items: center; gap: 12px;">
+              <button type="submit" class="btn btn-primary">Save Profile Changes</button>
+              <span id="profileSaveNote" style="font-size: 0.875rem; color: var(--color-success);" class="hidden">Profile updated.</span>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Shared Preview / Delete Confirmation Modals + Toast Container -->
+  <div id="confirmDeleteModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="deleteModalTitle" style="font-size: 1.15rem;">Delete Document</h2>
+        <button type="button" class="modal-close" id="closeDeleteModal" aria-label="Close modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <p style="color: var(--color-text-muted); font-size: 0.94rem;">
+        Are you sure you want to remove <strong id="deleteDocName">this file</strong> from your DocLocker workspace? You can restore it later if a backup snapshot exists.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="cancelDeleteBtn">Cancel</button>
+        <button type="button" class="btn btn-danger-outline" id="confirmDeleteBtn">Delete Document</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script defer src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 440" width="460" height="440" role="img" aria-label="Document Authentication Security Illustration">
+  <defs>
+    <radialGradient id="authGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#DBEAFE" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="authShieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#0645D9"/>
+    </linearGradient>
+    <filter id="authShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#0645D9" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <circle cx="230" cy="220" r="190" fill="url(#authGlow)"/>
+
+  <!-- Background translucent floating documents matching bottom-left of reference -->
+  <g transform="translate(88, 56)" opacity="0.65">
+    <rect width="74" height="92" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+    <rect x="14" y="18" width="42" height="5" rx="2.5" fill="#93C5FD"/>
+    <rect x="14" y="31" width="46" height="4.5" rx="2.2" fill="#DBEAFE"/>
+    <rect x="14" y="42" width="34" height="4.5" rx="2.2" fill="#DBEAFE"/>
+  </g>
+  <g transform="translate(302, 74) rotate(8)" opacity="0.6">
+    <rect width="70" height="88" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+    <rect x="13" y="18" width="38" height="5" rx="2.5" fill="#93C5FD"/>
+    <rect x="13" y="30" width="44" height="4.5" rx="2.2" fill="#DBEAFE"/>
+    <rect x="13" y="41" width="32" height="4.5" rx="2.2" fill="#DBEAFE"/>
+  </g>
+  <g transform="translate(82, 286) rotate(-6)" opacity="0.65">
+    <rect width="78" height="94" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+    <rect x="14" y="18" width="44" height="5" rx="2.5" fill="#93C5FD"/>
+    <rect x="14" y="31" width="48" height="4.5" rx="2.2" fill="#DBEAFE"/>
+    <rect x="14" y="42" width="36" height="4.5" rx="2.2" fill="#DBEAFE"/>
+  </g>
+  <g transform="translate(306, 280) rotate(5)" opacity="0.6">
+    <rect width="72" height="86" rx="10" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+    <rect x="13" y="18" width="38" height="5" rx="2.5" fill="#93C5FD"/>
+    <rect x="13" y="30" width="42" height="4.5" rx="2.2" fill="#DBEAFE"/>
+    <rect x="13" y="41" width="30" height="4.5" rx="2.2" fill="#DBEAFE"/>
+  </g>
+
+  <!-- Central Blue Shield -->
+  <g filter="url(#authShadow)">
+    <path d="M230 98 L322 132 V214 C322 276 281 325 230 348 C179 325 138 276 138 214 V132 L230 98 Z" fill="url(#authShieldGrad)"/>
+    <path d="M230 112 L309 141 V212 C309 266 273 310 230 331 C187 310 151 266 151 212 V141 L230 112 Z" fill="none" stroke="#93C5FD" stroke-width="2" stroke-opacity="0.55"/>
+  </g>
+
+  <!-- White Padlock -->
+  <g transform="translate(194, 168)">
+    <path d="M18 38 V26 C18 16.06 26.06 8 36 8 C45.94 8 54 16.06 54 26 V38" fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+    <rect x="6" y="36" width="60" height="48" rx="12" fill="#FFFFFF"/>
+    <circle cx="36" cy="56" r="6.5" fill="#0645D9"/>
+    <path d="M33 60 L32 72 C32 73.4 33.1 74.5 34.5 74.5 H37.5 C38.9 74.5 40 73.4 40 72 L39 60 Z" fill="#0645D9"/>
+  </g>
+</svg>
